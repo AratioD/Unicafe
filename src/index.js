@@ -12,22 +12,27 @@ class App extends React.Component {
       good: 0,
       goodValue: 1,
       buttonclick: 0,
+      averageSum: 0,
+      positivePercentage: 0,
       topic: "anna palautetta",
       otherTopic: "statistiikka",
     }
+    var value = 10;
+    value = value.toFixed(2);
+
   }
 
   render() {
     return (
       <div>
         <h1>{this.state.topic}</h1>
-        <button onClick={() => this.setState({ good: this.state.good + 1, buttonclick: this.state.buttonclick + 1 })}>
+        <button onClick={() => this.setState({ good: this.state.good + 1, buttonclick: this.state.buttonclick + 1, averageSum: this.state.averageSum + 1 })}>
           hyvä
         </button>
         <button onClick={() => this.setState({ neutral: this.state.neutral + 1, buttonclick: this.state.buttonclick + 1 })}>
           neutraali
         </button>
-        <button onClick={() => this.setState({ bad: this.state.bad + 1, buttonclick: this.state.buttonclick + 1 })}>
+        <button onClick={() => this.setState({ bad: this.state.bad + 1, buttonclick: this.state.buttonclick + 1, averageSum: this.state.averageSum - 1 })}>
           huono
         </button>
 
@@ -36,10 +41,8 @@ class App extends React.Component {
         <div>hyvä {this.state.good}</div>
         <div>neutraali {this.state.neutral}</div>
         <div>huono {this.state.bad}</div>
-        <div>keskiarvo {(this.state.badValue*this.state.bad) +
-         (this.state.neutralValue*this.state.neutral) +
-         (this.state.goodValue*this.state.good)
-          / this.state.buttonclick}</div>
+        <div>keskiarvo {(this.state.averageSum / this.state.buttonclick).toFixed(1)} </div>
+        <div>positiivisia {((this.state.good / this.state.buttonclick) * 100).toFixed(1)} %</div>
 
       </div>
     )
