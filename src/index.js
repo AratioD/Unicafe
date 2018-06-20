@@ -26,42 +26,68 @@ class App extends React.Component {
         <button onClick={() => this.setState({ good: this.state.good + 1, buttonclick: this.state.buttonclick + 1, averageSum: this.state.averageSum + 1, ButtonGood })}>
           hyvä
         </button>
-        <button onClick={() => this.setState({ neutral: this.state.neutral + 1, buttonclick: this.state.buttonclick + 1 })}>
+        <button onClick={() => this.setState({ neutral: this.state.neutral + 1, buttonclick: this.state.buttonclick + 1, ButtonNeutral })}>
           neutraali
         </button>
-        <button onClick={() => this.setState({ bad: this.state.bad + 1, buttonclick: this.state.buttonclick + 1, averageSum: this.state.averageSum - 1 })}>
+        <button onClick={() => this.setState({ bad: this.state.bad + 1, buttonclick: this.state.buttonclick + 1, averageSum: this.state.averageSum - 1, ButtonBad })}>
           huono
         </button>
 
-        {/* <button onClick={ButtonGood}>testi jee</button>
-
-        <button onClick={() => this.setState({ good: this.state.good + 1, buttonclick: this.state.buttonclick + 1, averageSum: this.state.averageSum + 1, ButtonGood })}>
-          testststst
-        </button> */}
-
-
         <h1>{this.state.otherTopic}</h1>
-        <div>hyvä {this.state.good}</div>
-        <div>neutraali {this.state.neutral}</div>
-        <div>huono {this.state.bad}</div>
-        <div>keskiarvo {(this.state.averageSum / this.state.buttonclick).toFixed(1)} </div>
-        <div>positiivisia {((this.state.good / this.state.buttonclick) * 100).toFixed(1)} %</div>
-        <ButtonGood topic={this.state.good} />
-        
+        <ButtonGood buttonValueGood={this.state.good} />
+        <ButtonNeutral buttonValueNeutral={this.state.neutral} />
+        <ButtonBad buttonValueBad={this.state.bad} />
+        <StatisticsAvg statisticsAvg={(this.state.averageSum / this.state.buttonclick).toFixed(1)} />
+        <StatisticsPositivs statisticsPositivs={((this.state.good / this.state.buttonclick) * 100).toFixed(1)} />
       </div>
     )
   }
 }
 
 const ButtonGood = (props) => {
-  console.log("sdfsdxxx2")
+  // console.log("buttongood value")
   return (
     <div>
-      Hyvä {props.topic}
+      hyvä {props.buttonValueGood}
     </div>
   )
 }
 
+const ButtonNeutral = (props) => {
+  // console.log("buttonneutral log")
+  return (
+    <div>
+      neutraali {props.buttonValueNeutral}
+    </div>
+  )
+}
+
+const ButtonBad = (props) => {
+  // console.log("buttonneutral log")
+  return (
+    <div>
+      huono {props.buttonValueBad}
+    </div>
+  )
+}
+
+const StatisticsAvg = (props) => {
+  // console.log("buttonneutral log")
+  return (
+    <div>
+      keskiarvo {props.statisticsAvg}
+    </div>
+  )
+}
+
+const StatisticsPositivs = (props) => {
+  // console.log("buttonneutral log")
+  return (
+    <div>
+      keskiarvo {props.statisticsPositivs} %
+    </div>
+  )
+}
 
 ReactDOM.render(
   <App />,
