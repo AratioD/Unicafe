@@ -34,11 +34,13 @@ class App extends React.Component {
         </button>
 
         <h1>{this.state.otherTopic}</h1>
+
         <ButtonGood buttonValueGood={this.state.good} />
         <ButtonNeutral buttonValueNeutral={this.state.neutral} />
         <ButtonBad buttonValueBad={this.state.bad} />
         <StatisticsAvg statisticsAvg={(this.state.averageSum / this.state.buttonclick).toFixed(1)} />
         <StatisticsPositivs statisticsPositivs={((this.state.good / this.state.buttonclick) * 100).toFixed(1)} />
+        <NoFeedbacks noFeedback={this.state.good+ this.state.neutral+this.state.bad} />
       </div>
     )
   }
@@ -46,45 +48,98 @@ class App extends React.Component {
 
 const ButtonGood = (props) => {
   // console.log("buttongood value")
+  if (props.buttonValueGood > 0) {
+    return (
+      <div>
+        hyvä {props.buttonValueGood}
+      </div>
+    )
+  }
   return (
     <div>
-      hyvä {props.buttonValueGood}
+
     </div>
   )
 }
 
 const ButtonNeutral = (props) => {
   // console.log("buttonneutral log")
+  if (props.buttonValueNeutral > 0) {
+    return (
+      <div>
+        neutraali {props.buttonValueNeutral}
+      </div>
+    )
+  }
   return (
     <div>
-      neutraali {props.buttonValueNeutral}
+
     </div>
   )
 }
 
 const ButtonBad = (props) => {
   // console.log("buttonneutral log")
+  if (props.buttonValueBad > 0) {
+    return (
+      <div>
+        huono {props.buttonValueBad}
+      </div>
+    )
+  }
   return (
     <div>
-      huono {props.buttonValueBad}
+
     </div>
   )
 }
 
+
 const StatisticsAvg = (props) => {
   // console.log("buttonneutral log")
+  if (props.statisticsAvg > 0) {
+    return (
+      <div>
+        keskiarvo {props.statisticsAvg}
+      </div>
+    )
+
+  }
   return (
     <div>
-      keskiarvo {props.statisticsAvg}
+
     </div>
   )
 }
 
 const StatisticsPositivs = (props) => {
-  // console.log("buttonneutral log")
+  console.log("statistic positiivinen", props.statisticsPositivs)
+  if (props.statisticsPositivs > 0) {
+    return (
+      <div>
+        keskiarvo {props.statisticsPositivs} %
+    </div>
+    )
+  }
   return (
     <div>
-      keskiarvo {props.statisticsPositivs} %
+
+    </div>
+  )
+}
+
+const NoFeedbacks = (props) => {
+  console.log("nofeed", props.noFeedback)
+  if (props.noFeedback === 0)  {
+    return (
+      <div>
+        ei yhtään palautetta annettu
+      </div>
+    )
+  }
+  return (
+    <div>
+
     </div>
   )
 }
