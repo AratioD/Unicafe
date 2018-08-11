@@ -34,19 +34,19 @@ class App extends React.Component {
           {this.state.nameGood}
         </button>
         <button onClick={() => this.setState({ neutral: this.state.neutral + 1, buttonclick: this.state.buttonclick + 1 })}>
-        {this.state.nameNeutral}
+          {this.state.nameNeutral}
         </button>
         <button onClick={() => this.setState({ bad: this.state.bad + 1, buttonclick: this.state.buttonclick + 1, averageSum: this.state.averageSum - 1 })}>
-        {this.state.nameBad}
+          {this.state.nameBad}
         </button>
 
         <h1>{this.state.otherTopic}</h1>
 
-        <TestComponent
+        <GeneralComponent
           //names
           nameGood={this.state.nameGood}
           nameNeutral={this.state.nameNeutral}
-          nameBad={this.state.nameBad}
+          nameBad={this.state.nameBad} u
           nameAverage={this.state.nameAverage}
           namePositive={this.state.namePositive}
           //values
@@ -62,7 +62,7 @@ class App extends React.Component {
   }
 }
 
-const TestComponent = (props) => {
+const GeneralComponent = (props) => {
   if (props.noFeedback === 0) {
     return (
       <div>
@@ -71,13 +71,25 @@ const TestComponent = (props) => {
     )
   } else {
     return (
-      <div>
-        <p> {props.nameGood} {props.buttonValueGood}</p>
-        <p> {props.nameNeutral} {props.buttonValueNeutral}  </p>
-        <p> {props.nameBad} {props.buttonValueBad} </p>
-        <p>{props.nameAverage} {props.statisticsAvg} </p>
-        <p>{props.namePositive} {props.statisticsPositivs} %</p>
-      </div>
+      <table>
+        <thead>
+          <tr>
+            <td> {props.nameGood} {props.buttonValueGood}</td>
+          </tr>
+          <tr>
+            <td>{props.nameNeutral} {props.buttonValueNeutral}</td>
+          </tr>
+          <tr>
+            <td>{props.nameBad} {props.buttonValueBad}</td>
+          </tr>
+          <tr>
+            <td>{props.nameAverage} {props.statisticsAvg}</td>
+          </tr>
+          <tr>
+            <td>{props.namePositive} {props.statisticsPositivs} %</td>
+          </tr>
+        </thead>
+      </table>
     )
   }
 }
