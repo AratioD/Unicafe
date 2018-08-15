@@ -1,3 +1,10 @@
+Ole hyvä katsokaa tämä repository myös
+https://github.com/AratioD/anecdote
+Tehtävät 1.12-1.14
+
+
+
+
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
 
 Below you will find some information on how to perform common tasks.<br>
