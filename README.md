@@ -1,7 +1,8 @@
 Ole hyvä katsokaa tämä repository myös
 https://github.com/AratioD/anecdote
 Tehtävät 1.12-1.14
-
+https://github.com/AratioD/FullStackTehtava1.1
+tehtävät 1.1.-1.5
 
 
 
